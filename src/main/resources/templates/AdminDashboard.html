@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transaction Search</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background-color: #cbccc0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 800px;
+            padding: 40px;
+            background-color: #ded21f;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .header h1 {
+            color: #2c3e50;
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            color: #7f8c8d;
+            font-size: 16px;
+        }
+        
+        .search-area {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+        
+        .search-section {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .search-section h2 {
+            color: #34495e;
+            font-size: 20px;
+            margin-bottom: 5px;
+        }
+        
+        .search-box {
+            display: flex;
+        }
+        
+        .search-box input {
+            flex: 1;
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 5px 0 0 5px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        
+        .search-box input:focus {
+            outline: none;
+            border-color: #3498db;
+        }
+        
+        .search-box button {
+            padding: 15px 25px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 0 5px 5px 0;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        
+        .search-box button:hover {
+            background-color: #2980b9;
+        }
+        
+        .divider {
+            margin: 10px 0;
+            text-align: center;
+            position: relative;
+        }
+        
+        .divider::before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background-color: #e0e0e0;
+        }
+        
+        .divider span {
+            background-color: white;
+            padding: 0 15px;
+            position: relative;
+            color: #7f8c8d;
+        }
+        
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+            
+            .header h1 {
+                font-size: 24px;
+            }
+            
+            .search-box input, .search-box button {
+                padding: 12px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Transaction Search</h1>
+            <p>Look up transaction details by transaction ID or account holder</p>
+        </div>
+        
+        <div class="search-area">
+            <div class="search-section">
+                <h2>Search by Transaction ID</h2>
+                <p>Enter the unique transaction identifier</p>
+                <div class="search-box">
+                    <form method="post" action ="/transactionById">
+                        <input type="text" class="form-control" name="id" required />        
+                                    <button>Search</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="divider">
+                <span>OR</span>
+            </div>
+            
+            <div class="search-section">
+                <h2>Search by Account Holder</h2>
+                <p>Enter the name of the account holder</p>
+                <div class="search-box">
+                    <!-- <input type="text" placeholder="Enter Account Holder Name" id="account-search">
+                    <button>Search</button> -->
+                    <form method="post" action ="/AccNo">
+                        <input type="text" class="form-control" name="id" required />        
+                                    <button>Search</button>
+                    </form>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
