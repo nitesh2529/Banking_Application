@@ -27,16 +27,11 @@ public class AdminSer {
 public  Admin findByUsername(String username){
        
     List<Admin>list=adminRepo.findAll();
-    // System.out.println(accounts);
     for( Admin account: list){
-        // System.out.println(account.getUsername());
         if(account.getUsername().equals(username)){
-            // System.out.println("Account found");
             return account;
         }
-//  else{
-//     throw new RuntimeException("Account not found");
-//  }
+
 }
  
  return null;

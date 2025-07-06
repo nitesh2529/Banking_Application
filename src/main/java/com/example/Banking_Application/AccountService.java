@@ -1,22 +1,11 @@
 package com.example.Banking_Application;
 
 import java.math.BigDecimal;
-import java.security.AuthProvider;
 import java.time.LocalDateTime;
-import java.util.Arrays;
-import java.util.Collection;
 import java.util.List;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.security.SecurityProperties.User;
-import org.springframework.security.config.annotation.authentication.configurers.userdetails.UserDetailsServiceConfigurer;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
@@ -33,7 +22,7 @@ AccountService accountService;
   public TransactionRepository transactionRepository;
 //  Account account = new Account();
      public Account findByUsername(String username){
-       
+       System.out.println(username);
         List<Account> accounts = accountRepository.findAll();
         // System.out.println(accounts);
         for(Account account: accounts){
