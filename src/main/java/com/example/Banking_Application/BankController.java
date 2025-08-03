@@ -244,14 +244,20 @@ public class BankController {
 
     @PostMapping("/transfer")
     public String transfer(@RequestParam String username, @RequestParam BigDecimal amount, Model model) {
-        String fromUsername = getCurrentUsername();
-        Account fromAccount = accountService.findByUsername(fromUsername);
+        // String fromUsername = getCurrentUsername();
+        // Account fromAccount = accountService.findByUsername(fromUsername);
         try {
+            String fromUsername = getCurrentUsername();
+        Account fromAccount = accountService.findByUsername(fromUsername);
             accountService.transferAmount(fromAccount, username, amount);
         } catch (Exception e) {
             model.addAttribute("error", e.getMessage());
-            model.addAttribute("account", fromAccount);
-            return "dashboard";
+            // model.addAttribute("account",accountService.findByUsername( getCurrentUsername()));
+             Account account = accountService.findByUsername(getCurrentUsername());
+        model.addAttribute("username", account.getUsername().toUpperCase());
+        model.addAttribute("balance", account.getBalance());
+        model.addAttribute("myid", account.getMyid());
+             return "dashboard";
         }
         return "redirect:/dashboard";
     }

@@ -109,8 +109,9 @@ public void regisAccount(String username, String password){
             throw new RuntimeException("Insufficient fund");
         }
         Account toAccount = accountService.findByUsername(toUsername);
-        // .orElseThrow(() -> new RuntimeException("Account not found"));
-        //withdraw from fromAccount
+          if(toAccount==null){
+            throw new RuntimeException("Account is not found !please enter valid user name ");
+        }
         fromAccount.setBalance(fromAccount.getBalance().subtract(amount));
         // accountRepository.save(fromAccount);
         //add to toAccount
