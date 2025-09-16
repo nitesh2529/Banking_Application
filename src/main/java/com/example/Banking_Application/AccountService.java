@@ -74,18 +74,7 @@ public void regisAccount(String username, String password){
         account.setBalance(account.getBalance().subtract(amount));
         accountRepository.save(account);
     }
-        // public boolean login(String username, String password){
-        // Account account = findByUsername(username);
-        // return passwordEncoder.matches(password, account.getPassword());}
-        // account.setBalance(account.getBalance().subtract(amount));
-        // accountRepository.save(account);
-        // Transaction transaction = new Transaction(
-        //     amount,
-        //     "WITHDRAW",
-        //     LocalDateTime.now(),
-        //     account
-        // );
-        // transactionRepository.save(transaction);
+        //
     
     public List <Transaction> getTransactionsHistory(Account account2){
 
@@ -93,17 +82,7 @@ public void regisAccount(String username, String password){
 // System.out.println(account.getTransactions());
         return account.getTransactions();
     }
-    // @Override
-    // public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-    //     Account account = accountService.findByUsername(username);
-    //    if(account == null){
-    //        throw new UsernameNotFoundException("Account not found");
-    //    }
-    //    return new Account();
-    // }
-    // public Collection<? extends GrantedAuthority>authorities(){
-    //     return Arrays.asList(new SimpleGrantedAuthority("User"));
-    // }
+   
     public void transferAmount(Account fromAccount,String toUsername, BigDecimal amount){
         if(fromAccount.getBalance().compareTo(amount)<0){
             throw new RuntimeException("Insufficient fund");
@@ -133,26 +112,11 @@ public void regisAccount(String username, String password){
          Transaction transaction1= transactionRepository.save(debitTransaction);
 toAccount.getTransactions().add(transaction1);
         accountRepository.save(toAccount);
-        // accountRepository.save(fromAccount);
-    //    Transaction creditTransaction = new Transaction();
-    //    creditTransaction.setAmount(amount);
-    //    debitTransaction.setType("TRANSFER"+" from "+fromAccount.getUsername().toUpperCase());
-        //   creditTransaction.setTimestamp(LocalDateTime.now());
-
-        //   Transaction transaction2= transactionRepository.save(debitTransaction);
+       
             fromAccount.getTransactions().add(transaction1);
         //  toAccount.setTransactions(Arrays.asList(creditTransaction));
         accountRepository.save(fromAccount);
     }
-    // public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-    //     Account account = accountService.findByUsername(username);
-    //    if(account == null){
-    //        throw new UsernameNotFoundException("Account not found");
-    //    }
-    //    return new Account();
-    // } 
-    // public Collection<? extends GrantedAuthority>authorities(){
-    //         return Arrays.asList(new SimpleGrantedAuthority("User"));
-    //     }
+  
 }
 
